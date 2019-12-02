@@ -16,4 +16,4 @@
 
 *Binary_tree/Binary_tree_test.с* - single linked testing
 
-*Single_List/Task_1.9.c* - Task 1.9
+*Binary_tree/Task_1.9.c* - Task 1.9
