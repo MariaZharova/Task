@@ -12,5 +12,9 @@
 
 *Single_List/Sl_list.h* - single linked list header 
 
-*Single_List/Sl_list.c* - single linked list implementation   
+*Single_List/Sl_list.c* - single linked list implementation  
+
+*Single_List/Sl_list_test.c* - single linked testing
+
+*Single_List/Task_1.2.c* - Task_1.2
 
