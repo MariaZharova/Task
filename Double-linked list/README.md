@@ -10,12 +10,12 @@
 
 **Feature-1** - directory for developing project 
 
-*Binary_tree/<...>.h* - double-linked list header 
+*Double-linked list/<...>.h* - double-linked list header 
 
-*Binary_tree/<...>.с* - double-linked  list implementation   
+*Double-linked list/<...>.с* - double-linked  list implementation   
 
-*Binary_tree/<...>.с* - double-linked testing
+*Double-linked list/<...>.с* - double-linked testing
 
-*Single_List/Task_1.4.c* - Task 1.4
+*Double-linked list/Task_1.4.c* - Task 1.4
 
 
