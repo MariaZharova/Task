@@ -1,9 +1,9 @@
 ## Tasks
 
-| Developer       | Task                                |
-| --------------- |:-----------------------------------:|
-| Maria Zharova   | Single-linked list implementation   |
-| Usmanov Abubakr | Single-linked list testing          |
+| Developer       | Task                                 |
+| --------------- |:------------------------------------:|
+| Maria Zharova   | Single-linked list implementation    |
+| Usmanov Abubakr | Single-linked list testing, task 1.2 |
 
 
 ## Files
