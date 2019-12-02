@@ -1,7 +1,7 @@
 ## Tasks
 
 | Developer       | Task                           |
-| --------------- |:--------------------------- --:|
+| --------------- |:------------------------------:|
 | Maria Zharova   | AVL tree testing, task 1.13    |
 | Usmanov Abubakr | AVL tree implementation        |
 
