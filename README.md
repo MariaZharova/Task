@@ -3,7 +3,8 @@ This is educational project to learn C and data structures at MIPT.
 
 
 ## Authors
-Zharova Maria\n
+Zharova Maria
+
 Usmanov Abubakr
 
 
@@ -20,4 +21,5 @@ Visual Studio 2019
 
 ## Brances
 Master - there will be ready projects
+
 Feature 1 - there we are developing a project, you can also look at it
