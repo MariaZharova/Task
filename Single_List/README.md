@@ -16,5 +16,5 @@
 
 *Single_List/Sl_list_test.c* - single linked testing
 
-*Single_List/Task_1.2.c* - Task_1.2
+*Single_List/Task_1.2.c* - Task 1.2
 
