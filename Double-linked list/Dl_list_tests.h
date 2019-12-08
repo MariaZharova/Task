@@ -27,6 +27,11 @@ int run_all_tests();
 void infill(LIST* list, int n);
 
 /*
+* Helper function that find element in list
+*/
+int find_elem(LIST* list, int value)
+
+/*
 * Function for run one test
 */
 void run_test(int num, char* description, TEST test);
