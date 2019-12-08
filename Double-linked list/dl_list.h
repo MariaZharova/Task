@@ -16,7 +16,9 @@ typedef struct _LIST_NODE
 
 typedef struct _LIST
 {
-	LIST_NODE* first;
+	int size;
+	LIST_NODE* head;
+	LIST_NODE* tail;
 } LIST;
 
 LIST* list_new();
