@@ -15,8 +15,8 @@
 #define ERROR_DELETE -3
 #define ERROR_SIZE -4
 #define ERROR_REVERSE -5
-#define ERROR_REVERSE -6
-#define ERROR_REVERSE -7
+#define ERROR_UNSHIFT -6
+#define ERROR_POP -7
 
 int test_list_new(void)
 {
@@ -48,6 +48,19 @@ void infill(LIST* list, int n)
 	}
 }
 
+int find_elem(LIST* list, int value)
+{
+	int f = 0;
+	LIST_NODE *curr = list->head;
+	while (NULL != curr)
+	{
+		if (curr->value == value)
+			f = 1;
+		curr = curr->next;
+	}
+	return f;
+}
+
 int test_list_del(void)
 {
 	LIST* list = list_new();
@@ -69,26 +82,25 @@ int test_push(void)
 	infill(list, 50);
 	for (i = 0; i < 50; i++)
 	{
-		if (find_element(list, i))
+		if (find_elem(list, i))
 			counter++;
 		else
 			f = 0;
 	}
-	if (!flag)
+	if (!f)
 	{
 		printf("ERROR in test_push: element was not pushed!\n");
-		return -1;
+		return ERROR_PUSH;
 	}
 	if (count != list->size)
 	{
-		printf("ERROR in test_push: amount of element is not equal size of list!\n");
-		return -2;
+		printf("Error: amount of element is not equal size of list\n");
+		return ERROR_SIZE;
 	}
-	printf("PASS: test_push\n");
+	printf("Test_push has been passed!\n");
 	return 0;
 }
 
-// Test using assert
 int test_pop(void)
 {
 	LIST *list = list_new();
@@ -97,32 +109,32 @@ int test_pop(void)
 	pop(list, plist);
 	if (NULL != plist)
 	{
-		printf("ERROR in test_pop: smth wrong with deleting from empty list!\n");
-		return -1;
+		printf("Error, pointer is NULL\n");
+		return ERROR_POP;
 	}
 	infill(list, 30);
 	size = 30;
-	LIST_NODE *next = list->next;
-	pop(list, pointer);
-	if (NULL == pointer)
+	LIST_NODE* next = list->next;
+	pop(list, plist);
+	if (NULL == plist)
 	{
-		printf("ERROR in test_pop: pointer is NULL!\n");
-		return -2;
+		printf("Error, pointer is NULL\n");
+		return ERROR_POP;
 	}
 	if (list->size != size - 1)
 	{
-		printf("ERROR in test_pop: wrong size of list!\n");
-		return -3;
+		printf("Error: wrong size of list!\n");
+		return ERROR_SIZE;
 	}
 	if (find_element(list, tail) == 0)
 	{
-		printf("ERROR in test_pop: element was not deleted!\n");
-		return -4;
+		printf("Error: element was not deleted\n");
+		return ERROR_POP;
 	}
-	if (pointer != tail)
+	if (plist != tail)
 	{
-		printf("ERROR in test_pop: pointer is wrong!\n");
-		return -5;
+		printf("Error: pointer is wrong\n");
+		return ERROR_POP;
 	}
 	printf("PASS: test_pop\n");
 	return 0;
@@ -134,28 +146,28 @@ int test_unshift(void)
 	unshift(list, 20);
 	if (list->head->value != 20)
 	{
-		printf("ERROR in test_unshift: element was not added to the list!\n");
-		return -1;
+		printf("Error: element was not added to the list!\n");
+		return ERROR_UNSHIFT;
 	}
 	if (list->size != 1)
 	{
-		printf("ERROR in test_unshift: wrong size of the list!\n");
-		return -2;
+		printf("Error: wrong size of the list!\n");
+		return ERROR_SIZE;
 	}
 	fill_list(list, 20);
 	unshift(list, 30);
 	int size = 20;
 	if (list->head->value != 30)
 	{
-		printf("ERROR in test_unshift: element was not added to the list!\n");
-		return -1;
+		printf("Error: element was not added to the list\n");
+		return ERROR_UNSHIFT;
 	}
 	if (list->size != size + 1)
 	{
-		printf("ERROR in test_unshift: wrong size of the list!\n");
-		return -2;
+		printf("Error: wrong size of the list!\n");
+		return ERROR_SIZE;
 	}
-	printf("PASS: test_unshift\n");
+	printf("Test_unshift has been passed\n");
 	return 0;
 }
 
@@ -165,8 +177,8 @@ int test_shift(void)
 	int *plist = NULL;
 	if (!shift(list, plist))
 	{
-		printf("The process deleting from empty list has failed\n");
-		return -1;
+		printf("Deleting from empty list has failed\n");
+		return ERROR_SHIFT;
 	}
 	infill(list, 30);
 	int size = 30;
@@ -174,12 +186,12 @@ int test_shift(void)
 	shift(list, plist);
 	if (plist != check_plist)
 	{
-		printf("ERROR in test_shift: pointer does not contain the right value!\n");
-		return -2;
+		printf("Error: pointer is wrong\n");
+		return ERROR_SHIFT;
 	}
 	if (list->size != size - 1)
 	{
-		printf("Error: wrong size of the list!\n");
+		printf("Error: wrong size of the list\n");
 		return ERROR_SIZE;
 	}
 	printf("Test_shift has been passed!\n");
@@ -230,7 +242,7 @@ int test_print(void)
 	infill(list, 30);
 	print(list);
 	printf("There should be 30 elements\n");
-	//вывод в файл, потом считать из него?
+	//TODO
 	return 0;
 }
 
