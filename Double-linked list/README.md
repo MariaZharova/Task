@@ -14,7 +14,9 @@
 
 *Double-linked list/<...>.с* - double-linked  list implementation   
 
-*Double-linked list/<...>.с* - double-linked testing
+*Double-linked list/Dl_list_tests.h* - double-linked testing header
+
+*Double-linked list/Dl_list_tests.c* - double-linked implementation
 
 *Double-linked list/Task_1.4.c* - Task 1.4
 
