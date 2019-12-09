@@ -14,6 +14,8 @@
 
 *Binary_tree/Binary_tree.с* - single linked list implementation   
 
-*Binary_tree/Binary_tree_test.с* - single linked testing
+*Binary_tree/Binary_tree_test.h* - single linked testing header
+
+*Binary_tree/Binary_tree_test.с* - single linked testing implementation
 
 *Binary_tree/Task_1.9.c* - Task 1.9
