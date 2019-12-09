@@ -16,7 +16,7 @@ Visual Studio 2019
 | Name             |                  |                  |                  |                  |                  |                  |
 |:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|:----------------:|
 | Zharova Maria    | Single-linked list implementation | Double-linked list testing, Task 1.4 | Binary tree implementation | Hash map testing, Task 1.10 | AVL tree testing | Double hashing |
-| Usmanov Abubakr  | Single-linked list testing, Task 1.2 | Double-linked list implementation | Binary tree testing, Task 1.9 | Hash map implementation | AVL tree   |            |
+| Usmanov Abubakr  | Single-linked list testing, Task 1.2 | Double-linked list implementation | Binary tree testing, Task 1.9 | Hash map implementation | AVL tree implementation  |            |
 
 
 ## Branches
