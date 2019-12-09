@@ -5,12 +5,7 @@
 * Created 11.11.2019
 */
 
-#include <stdio.h>
-#include <stdlib.h>
-#include "Binary_tree.h"
-#define ERROR_OUT_OF_MEMORY NULL
-#define ERROR_INVALID_INPUT NULL
-#define ERROR_INVALID_INPUT_INT -1
+#include "common.h"
 
 PTREE_NODE create_tree(void)
 {
