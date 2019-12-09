@@ -48,9 +48,28 @@ void destroy_tree(PTREE_NODE tree)
 	printf("It's OK. The all list has been deleted.\n");
 }
 
-PTREE_NODE insert_element(PTREE_NODE tree, int value)
+PTREE_NODE insert_element(PTREE_NODE tree, int key)
 {
-
+    PTREE_NODE curr = tree;
+    while (curr->value != key
+    {
+        if (key < curr->value)
+        {
+            if (NULL == curr->left)
+            {
+                curr->left = malloc(sizeof(three->value));
+            }
+        curr = curr->left;
+        }
+        else
+        {
+            if (NULL == curr->right)
+            {
+                curr->right = malloc(sizeof(three->value));
+            }
+            curr = curr->right;
+        }
+    }
 }
 
 void delete_element(PTREE_NODE tree, int value)
