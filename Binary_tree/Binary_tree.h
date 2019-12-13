@@ -7,9 +7,6 @@
 
 #pragma once
 
-#define FALSE 0
-#define TRUE 1
-
 typedef struct _TREE_NODE *PTREE_NODE;
 
 typedef struct _TREE_NODE
@@ -19,12 +16,12 @@ typedef struct _TREE_NODE
 } TREE_NODE;
 
 /*
- * Create BST
+ * Create new element (or new tree)
  * Arguments:
  *     none
  * Returns pointer to the created tree
  */
-PTREE_NODE create_tree(void);
+PTREE_NODE create_elem(void);
 
 /*
  * Destroy BST
@@ -38,10 +35,10 @@ void destroy_tree(PTREE_NODE tree);
  * Insert new element to the BST
  * Arguments:
  *     tree - pointer to the tree
- *	   value  - value of added element
+ *	   key  - value of added element
  * Returns pointer to the inserted element
  */
-PTREE_NODE insert_element(PTREE_NODE tree, int value);
+PTREE_NODE insert_elem(PTREE_NODE tree, int key); 
 
 /*
  * Delete element from the BST
@@ -50,23 +47,42 @@ PTREE_NODE insert_element(PTREE_NODE tree, int value);
  *	   key  - value of map key
  * Returns none
  */
-void delete_element(PTREE_NODE tree, int value);
+void delete_elem(PTREE_NODE tree, int key); 
+
+/*
+ * Width first search
+ * Arguments:
+ *     tree - pointer to the tree
+ * Returns none
+ */
+void wfs(PTREE_NODE tree);
+
+/*
+ * Depth first search
+ * Arguments:
+ *     tree - pointer to the tree
+ * Returns none
+ */
+void dfs(PTREE_NODE tree);
 
 /*
  * Print the BST
  * Arguments:
  *     tree - pointer to the tree
+ *     level - number of spaces
  * Returns none
  */
-void print_tree(PTREE_NODE tree);
+void print_tree(PTREE_NODE tree, int level);
 
 /*
  * Find element in the BST
  * Arguments:
  *     tree - pointer to the tree
- *	   value  - value of finding element
+ *	   key  - value of finding element
  * Returns pointer to the founded element
  */
-PTREE_NODE find_node(PTREE_NODE tree, int value);
+PTREE_NODE find_node(PTREE_NODE tree, int key);
+
+
 
 
