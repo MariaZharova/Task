@@ -3,6 +3,7 @@
 * Binary Search Tree (BTS) implementation
 * Author Maria Zharova <MZharovaNN@yandex.ru>
 * Created 11.11.2019
+* (c) MIPT 2019
 */
 
 #include "common.h"
@@ -141,8 +142,8 @@ void dfs(PTREE_NODE tree)
 		return;
 	}
 	printf("%d\n", tree->value);
-	tree_dfs(tree->left);
-	tree_dfs(tree->right);
+	dfs(tree->left);
+	dfs(tree->right);
 }
 
 
