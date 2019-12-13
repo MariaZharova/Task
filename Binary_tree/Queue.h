@@ -10,8 +10,8 @@
 
 #include "Binary_tree.h"
 
-typedef struct Q_NODE* PQ_NODE;
-typedef struct QUEUE* PQUEUE;
+typedef struct _Q_NODE *PQ_NODE;
+typedef struct _QUEUE *PQUEUE;
 
 typedef struct _Q_NODE
 {
