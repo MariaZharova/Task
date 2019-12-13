@@ -11,7 +11,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "Binary_tree.h"
+#include "Queue.h"
 
-#define ERROR_OUT_OF_MEMORY NULL -1
-#define ERROR_INVALID_INPUT NULL -2
-#define ERROR_INVALID_INPUT_INT -3
+#define ERROR_OUT_OF_MEMORY NULL 
+#define ERROR_INSERT NULL
+
