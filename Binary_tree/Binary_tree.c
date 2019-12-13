@@ -7,138 +7,164 @@
 
 #include "common.h"
 
-PTREE_NODE create_tree(void)
+PTREE_NODE create_elem(void)
 {
-	PTREE_NODE Root;
-	Root = malloc(sizeof(TREE_NODE));
-	if (NULL == Root)
+	PTREE_NODE root;
+	root = malloc(sizeof(TREE_NODE));
+	if (NULL == root)
 	{
-		printf("Error, out of memory:(\n");
+		printf("create_elem: Error, out of memory:(\n");
 		return ERROR_OUT_OF_MEMORY;
 	}
-	Root->value = 0;
-	Root->left = NULL;
-	Root->right = NULL;
+	root->value = 0;
+	root->left = NULL;
+	root->right = NULL;
 
-	return Root;
+	return root;
 }
 
 void destroy_tree(PTREE_NODE tree)
 {
 	if (NULL == tree)
 	{
-		printf("Error, out of memory:(\n");
 		return;
 	}
-	if (tree->left)
-	{
-		destroy_tree(tree->left);
-	}
-	if (tree->right)
-	{
-		destroy_tree(tree->right);
-	}
+
+	destroy_tree(tree->left);
+	destroy_tree(tree->right);
 	free(tree);
+}
+
+PTREE_NODE insert_elem(PTREE_NODE tree, int key)
+{
+	if (NULL == tree)
+	{
+		tree = create_elem();
+		tree->value = key;
+		return tree;
+	}	
+	if (tree->value == key)
+	{
+		printf("insert_elem: This element already exists.\n");
+		return ERROR_INSERT;
 	}
-	printf("It's OK. The all list has been deleted.\n");
+	if (tree->value > key)
+	{
+		tree->left = insert_elem(tree->left, key);
+	}
+	else
+	{
+		tree->right = insert_elem(tree->right, key);
+	}
+
+	return tree;
 }
 
-PTREE_NODE insert_element(PTREE_NODE tree, int key)
+void delete_elem(PTREE_NODE root, int key)
 {
-    PTREE_NODE curr = tree;
-    while (curr->value != key
-    {
-        if (key < curr->value)
-        {
-            if (NULL == curr->left)
-            {
-                curr->left = malloc(sizeof(three->value));
-            }
-        curr = curr->left;
-        }
-        else
-        {
-            if (NULL == curr->right)
-            {
-                curr->right = malloc(sizeof(three->value));
-            }
-            curr = curr->right;
-        }
-    }
-}
-
-void delete_element(PTREE_NODE tree, int value)
-{
-	PTREE_NODE curr = tree;
+	PTREE_NODE curr = find_node(root, key);
 	PTREE_NODE parent = NULL;
-	while (curr && curr->value != value)
+	if (NULL == curr)
 	{
-		parent = curr;
-		if (value < curr->value)
-		{
-			curr = curr->left;
-		}
-		else
-		{
-			curr = curr->right;
-		}
-
-		if (NULL == curr)
-		{
-			return;
-		}
-
-		if(NULL == curr->left)
-		{
-			if (parent->left == curr)
-			{
-				parent->left = curr->right;
-			}
-
-			if (parent->right == curr)
-			{
-				parent->right = curr->right;
-			}
-			free(curr);
-
-			return;
-		}
-
-		if (NULL == curr->right)
-		{
-			if (parent->left == curr)
-			{
-				parent->left = curr->left;
-			}
-			if (parent->right == curr)
-			{
-				parent->right = curr->left;
-			}
-			free(curr);
-
-			return;
-		}
+		printf("delete_elem: Error, this element was not founded\n");
+		return;
 	}
+
+	if (NULL == curr->left)
+	{
+		if (parent->left == curr)
+		{
+	    	parent->left = curr->right;
+		}
+
+		if (parent->right == curr)
+		{
+			parent->right = curr->right;
+		}
+		free(curr);
+
+		return;
+	}
+
+	if (NULL == curr->right)
+	{
+		if (parent->left == curr)
+		{
+			parent->left = curr->left;
+		}
+		if (parent->right == curr)
+		{
+			parent->right = curr->left;
+		}
+		free(curr);
+
+		return;
+	}
+	PTREE_NODE replace = curr->left;
+	while (NULL != replace->right)
+	{
+		replace = replace->right;
+	}
+	int replaced_value = replace->value;
+	delete_elem(replace, replaced_value);
+	curr->value = replaced_value;
 }
 
-void print_tree(PTREE_NODE tree)
+
+void wfs(PTREE_NODE tree)
 {
-	if (tree->left)
+	PTREE_NODE p;
+	PQUEUE q = create_queue();
+	queue_push(q, tree);
+	while (NULL != q->head)
 	{
-        print_tree(tree->left);
+		p = q->head->ptr;
+		queue_pop(q);
+		printf("%d ", p->value);
+
+		if (p->left != NULL)
+		{
+			queue_push(q, p->left);
+		}
+		if (p->right != NULL)
+		{
+			queue_push(q, p->right);
+		}
 	}
-	printf("< %d\n", tree->left->value);
-	if (tree->right)
-	{
-		print_tree(tree->right);
-	}
-	printf("< %d\n", tree->right->value);
+
 }
 
-PTREE_NODE find_node(PTREE_NODE tree, int key)
+void dfs(PTREE_NODE tree)
 {
-	PTREE_NODE curr = tree;
-	while (curr && curr->value != key)
+	if (NULL == tree)
+	{
+		return;
+	}
+	printf("%d\n", tree->value);
+	tree_dfs(tree->left);
+	tree_dfs(tree->right);
+}
+
+
+void print_tree(PTREE_NODE tree, int level)
+{
+	if (NULL == tree)
+	{
+		return;
+	}
+	print_tree(tree->left, level + 1);
+	for (int i = 0; i < level; i++)
+	{
+		printf("   ");
+	}
+	printf("%d\n", tree->value);
+	print_tree(tree->right, level + 1);
+}
+
+PTREE_NODE find_node(PTREE_NODE root, int key)
+{
+	PTREE_NODE curr = root;
+	while (NULL != curr && curr->value != key)
 	{
 		if (key < curr->value)
 		{
@@ -148,6 +174,14 @@ PTREE_NODE find_node(PTREE_NODE tree, int key)
 		{
 			curr = curr->right;
 		}
+	}
+	if (NULL == curr)
+	{
+		printf("find_node: Element was not founded.\n");
+	}
+	else
+	{
+		printf("find_node: Element was founded.\n");
 	}
 
 	return curr;
