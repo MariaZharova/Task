@@ -1,5 +1,5 @@
 /*
- * File:  dl_list_test.h
+ * File:  dl_list_tests.h
  * Brief: Header file for double linked list testing
  * Created on 08.12.2019
  * Author Maria Zharova <MZharovaNN@yandex.ru>
@@ -7,6 +7,7 @@
  */
 
 #pragma once
+#include "common.h"
 
 typedef int(*TEST)(void);
 
@@ -29,7 +30,7 @@ void infill(LIST* list, int n);
 /*
 * Helper function that find element in list
 */
-int find_elem(LIST* list, int value)
+int find_elem(LIST* list, int value);
 
 /*
 * Function for run one test
