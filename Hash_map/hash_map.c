@@ -59,19 +59,18 @@ LIST* find(char* last_name)
 	}
 }
 
-/*
+
 int del(char *last_name)
 {
 unsigned int index = hash(last_name);
-if (NULL == hash_map[index].last_name)
+if (NULL == hash_map[index]->first->val.last_name)
 {
 return -1;
 }
-if (NULL != hash_map[index].last_name)
+if (NULL != hash_map[index]->first->val.last_name)
 {
-free(hash_map[index].surname);
+free(hash_map[index]->first->val.last_name);
 }
-hash_map[index].surname = NULL;
+hash_map[index]->first->val.last_name = NULL;
 return index;
 }
-*/
