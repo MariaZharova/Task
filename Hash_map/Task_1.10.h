@@ -12,10 +12,10 @@
  * Insert new name and number into table
  * Parameters
  *    name - pointer to the person's name
- *    number - value of pearson's phone number
+ *    number - value of person's phone number
  * Returns none
  */
-void INSERT(char* name, unsigned long long number);
+void INSERT_TASK(char* name, unsigned long long number);
 
 /*
 * Find name in the table
@@ -23,4 +23,4 @@ void INSERT(char* name, unsigned long long number);
 *    name - pointer to the person's name
 * Returns none
 */
-void FIND(char* name);
+void FIND_TASK(char* name);
