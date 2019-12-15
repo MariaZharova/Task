@@ -10,8 +10,7 @@
 #include "Task_1.10.h"
 #include <string.h>
 
-
-void INSERT(char *name, unsigned long long number)
+void INSERT_TASK(char *name, unsigned long long number)
 {
 	unsigned long long X = 0;
 	if (NULL == find(name))
@@ -28,7 +27,7 @@ void INSERT(char *name, unsigned long long number)
 	}
 }
 
-void FIND(char* name)
+void FIND_TASK(char* name)
 {
 	if (NULL == find(name)) 
 	{
