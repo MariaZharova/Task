@@ -11,23 +11,30 @@
 #include "color.h"
 #include "hash_map_tests.h"
 #define ERROR_INIT_DEINIT -1
-#define ERROR_ADD_FIND2 -2
-#define ERROR_DEL_FIND1 -3
+#define ERROR_ADD_FIND -2
+#define ERROR_DEL_FIND -3
 #define K 1000
 
-int test_init_deinit()
+char* a = "abcdefg";
+char* b = "abcdefghijklmnop";
+char* c = "abcdefghijklmnopqrstuvwxyz";
+char* d = "							 ";
+char* e = "1234567890";
+int returns;
+
+int test_deinit()
 {
-	hash_map_init(hash_table);
+	hash_map_init();
 	int i, c;
 	for (i = 0; i < K; ++i)
 	{
 		c = i % 256;
 		add(&((char)(c)), 10);
 	}
-	hash_map_deinit(hash_table);
+	hash_map_deinit();
 	for (i = 0; i < K; ++i)
 	{
-		if (NULL != hash_table[i])
+		if (NULL != hash_map[i])
 		{
 			printf("test_init_deinit: fail.\n");
 			return ERROR_INIT_DEINIT;
@@ -37,29 +44,39 @@ int test_init_deinit()
 	return 0;
 }
 
-int test_add_find()  ///TODO find2
+int test_add_find() 
 {
-	hash_map_init(hash_table);
+	hash_map_init();
 	int i, c;
 	srand(time(NULL));
 	for (i = 0; i < K; ++i)
 	{
 		c = (char)(rand() % 256);
 		add(&((char)(c)), 10);
-		if (NULL == find(&((char)(c)), 10))  //////////TODO: find2
+		if (NULL == find(&(char)(c))) 
 		{
-			printf("test_add: fail.\n");
-			return ERROR_ADD_FIND2;
+			printf("test_add_find: fail.\n");
+			return ERROR_ADD_FIND;
 		}
 	}
-	hash_map_deinit(hash_table);
-	printf("test_add: passed.\n");
+	hash_map_deinit(hash_map);
+	add(a, 10);
+	add(b, 10);
+	add(c, 10);
+	add(d, 10);
+	add(e, 10);
+	if (NULL == find(a) || NULL == find(b) || NULL == find(c) || NULL == find(d) || NULL == find(e))
+	{
+		printf("test_add_find: fail.\n");
+		return ERROR_ADD_FIND;
+	}
+	printf("test_add_find: passed.\n");
 	return 0;
 }
 
-int test_del_find()    /////////TODO find1
+int test_del_find()
 {
-	hash_map_init(hash_table);
+	hash_map_init();
 	int i, c;
 	srand(time(NULL));
 	for (i = 0; i < K; ++i)
@@ -70,16 +87,31 @@ int test_del_find()    /////////TODO find1
 	for (i = 0; i < K; ++i)
 	{
 		c = (char)(rand() % 256);
-		del(&((char)(c)));
-		if (NULL != find(&((char)(c))))  /////////TODO find1
+		returns = del(&((char)(c)));  //because function del returns int
+		if (NULL != find(&((char)(c)))) 
 		{
-			printf("test_del: fail.\n");
-			return ERROR_DEL_FIND1;
+			printf("test_del_find: fail.\n");
+			return ERROR_DEL_FIND;
 		}
 	}
-	hash_map_deinit(hash_table);
-	printf("test_del: passed.\n");
-	return 1;
+	add(a, 10);
+	add(b, 10);
+	add(c, 10);
+	add(d, 10);
+	add(e, 10);
+	returns = del(a);
+	returns = del(b);
+	returns = del(c);
+	returns = del(d);
+	returns = del(e);
+	if (NULL != find(a) || NULL != find(b) || NULL != find(c) || NULL != find(d) || NULL != find(e))
+	{
+		printf("test_del_find: fail.\n");
+		return ERROR_DEL_FIND;
+	}
+	hash_map_deinit(hash_map);
+	printf("test_del_find: passed.\n");
+	return 0;
 }
 
 void init_tests()
