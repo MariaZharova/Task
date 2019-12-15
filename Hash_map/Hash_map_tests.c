@@ -20,7 +20,7 @@ char* b = "abcdefghijklmnop";
 char* c = "abcdefghijklmnopqrstuvwxyz";
 char* d = "							 ";
 char* e = "1234567890";
-int returns;
+unsigned int returns;
 
 int test_deinit()
 {
@@ -44,7 +44,7 @@ int test_deinit()
 	return 0;
 }
 
-int test_add_find() 
+int test_add_find()
 {
 	hash_map_init();
 	int i, c;
@@ -53,7 +53,7 @@ int test_add_find()
 	{
 		c = (char)(rand() % 256);
 		add(&((char)(c)), 10);
-		if (NULL == find(&(char)(c))) 
+		if (NULL == find(&(char)(c)))
 		{
 			printf("test_add_find: fail.\n");
 			return ERROR_ADD_FIND;
@@ -88,7 +88,7 @@ int test_del_find()
 	{
 		c = (char)(rand() % 256);
 		returns = del(&((char)(c)));  //because function del returns int
-		if (NULL != find(&((char)(c)))) 
+		if (NULL != find(&((char)(c))))
 		{
 			printf("test_del_find: fail.\n");
 			return ERROR_DEL_FIND;
@@ -138,9 +138,9 @@ int run_all_tests()
 	printf("Run all tests:\n");
 	int test_num = 0;
 
-	run_test(++test_num, "Init and deinit hash map", test_init_deinit);
-	run_test(++test_num, "Add element by name and number and find it", test_add_find2);
-	run_test(++test_num, "Delete element by name and find it", test_del_find1);
+	run_test(++test_num, "Init and deinit hash map", test_deinit);
+	run_test(++test_num, "Add element by name and number and find it", test_add_find);
+	run_test(++test_num, "Delete element by name and find it", test_del_find);
 
 	return 0;
 }
