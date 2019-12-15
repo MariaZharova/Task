@@ -24,20 +24,14 @@ int run_all_tests(void);
 /*
 * Test for function hash_map_deinit
 */
-int test_deinit(void)
+int test_deinit(void);
 
 /*
 * Test for function add and find2
 */
-int test_add_find(void)
+int test_add_find(void);
 
 /*
 * Test for function del and find1
 */
-int test_del_find(void)
-
-
-
-
-
-
+int test_del_find(void);
