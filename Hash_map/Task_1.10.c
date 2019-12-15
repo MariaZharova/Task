@@ -15,29 +15,29 @@
 void INSERT(char *name, unsigned long long number)
 {
 	unsigned long long X = 0;
-	if (NULL == find(name)) ////TODO: find1
+	if (NULL == find(name))
 	{
-		add(name, num);
+		add(name, number);
 		printf("OK\n");
 	}
 	else
 	{
-		X = find(name)->first->value.number;
+		X = find(name)->head->value.number;
 		del(name);
-		add(name, num);
+		add(name, number);
 		printf("Changed. Old value = %llu\n", X);
 	}
 }
 
 void FIND(char* name)
 {
-	if (NULL == find(name)) //////TODO find1
+	if (NULL == find(name)) 
 	{
 		printf("NO\n");
 	}
 	else
 	{
-		printf("%llu", find(name)->first->value.number);
+		printf("%llu", find(name)->head->value.number);
 	}
 }
 
@@ -47,7 +47,7 @@ int main(void)
 	char command[COMMAND_SIZE];
 	char name[NAME_SIZE];
 	unsigned long long number = 0;
-	hash_map_init(); ///////TODO: arguments (hash_table)
+	hash_map_init(); 
  	while ((c = getchar()) != '\0')
 	{
 		if (c != ',' && c!=' ')
