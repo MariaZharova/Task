@@ -16,7 +16,7 @@ LIST* list_new()
 	return list;
 }
 
-list_delete(LIST* list)
+list_del(LIST* list)
 {
 	LIST_NODE* current = list->head;
 	LIST_NODE* next = NULL;
