@@ -18,7 +18,7 @@ plist create_list(void)
 	first = malloc(sizeof(list));
 	if (NULL == first)
 	{
-		printf("Error, out of memory:(\n");
+		printf("create_list: Error, out of memory:(\n");
 		return ERROR_OUT_OF_MEMORY;
 	}
 	first->size = 0;
@@ -31,6 +31,7 @@ int destroy_list(plist first)
 {
 	if (NULL == first)
 	{
+		printf("destroy_list: Error, the pointer to list is NULL\n");
 		return 1;
 	}
 	plist_entry head = first->head;
@@ -43,7 +44,7 @@ int destroy_list(plist first)
 		tmp1 = tmp2;
 	}
 	free(head);
-	printf("It's OK. The all list has been deleted.\n");
+	printf("destroy_list: The all list has been deleted.\n");
 	return 1;
 }
 
@@ -51,19 +52,19 @@ plist_entry insert_entry(plist first, int value)
 {
 	if (NULL == first)
 	{
-		printf("Error, the pointer to list is NULL\n");
+		printf("insert_entry: Error, the pointer to list is NULL\n");
 		return ERROR_INVALID_INPUT;
 	}
 	plist_entry pnew;
 	pnew = malloc(sizeof(list_entry));
 	if (NULL == pnew)
 	{
-		printf("Error, out of memory:(\n");
+		printf("insert_entry: Error, out of memory:(\n");
 		return ERROR_OUT_OF_MEMORY;
 	}
 	pnew->next = first->head;
 	pnew->value = value;
-	printf("It's OK. New element is %d\n", pnew->value);
+	printf("insert_entry: It's OK. New element is %d\n", pnew->value);
 	first->head = pnew;
 	first->size++;
 	return pnew;
@@ -73,7 +74,7 @@ int delete_entry(plist first, int value)
 {
 	if (NULL == first)
 	{
-		printf("Error, the pointer to list is NULL\n");
+		printf("delete_entry:Error, the pointer to list is NULL\n");
 		return ERROR_INVALID_INPUT_INT;
 	}
 	plist_entry curr = first->head;
@@ -107,7 +108,7 @@ int find_entry(plist first, int value)
 {
 	if (NULL == first)
 	{
-		printf("Error, the pointer to list is NULL\n");
+		printf("find_entry: Error, the pointer to list is NULL\n");
 		return ERROR_INVALID_INPUT_INT;
 	}
 	plist_entry tmp = first->head;
@@ -117,11 +118,11 @@ int find_entry(plist first, int value)
 		if (tmp->value == value)
 		{
 			counter++;
-			printf("Such element in %d place\n", i);
+			printf("find_entry: Such element in %d place\n", i);
 		}
 		tmp = tmp->next;
 	}
-	printf("%d elements with value %d were found in the list\n", counter, value);
+	printf("find_entry: %d elements with value %d were found in the list\n", counter, value);
 	return counter;
 }
 
