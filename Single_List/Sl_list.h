@@ -7,20 +7,20 @@
 
 #pragma once
 
-typedef struct _list_entry *plist_entry;
-typedef struct _list *plist;
+typedef struct _list_entry* plist_entry;
+typedef struct _list* plist;
 
 typedef struct _list_entry
 {
 	int value;
 	plist_entry next;
-}list_entry, *plist_entry;
+}list_entry, * plist_entry;
 
 typedef struct _list
 {
 	int size;
 	plist_entry head;
-}list, *plist;
+}list, * plist;
 
 /*
 * Create single sinked list
@@ -36,7 +36,7 @@ plist create_list(void);
 *    list - pointer to list head
 * Returns none
 */
-void destroy_list(plist list);
+int destroy_list(plist list);
 
 /*
 * Insert new element to list
@@ -69,4 +69,3 @@ int find_entry(plist list, int value);
 * Returns none
 */
 void print_list(plist list);
-
