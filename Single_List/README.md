@@ -14,13 +14,13 @@
 
 *Single_List/Sl_list.c* - single linked list implementation  
 
-*Single_List/Sl_list_test.h* - single linked testing header
+*Single_List/Sl_list_test.c* - single linked testing
 
-*Single_List/Sl_list_test.c* - single linked testing implementation
+*Single_List/task_1.2.h* - header-file for task 1.2
 
-*Single_List/Task_1.2.c* - Task 1.2
+*Single_List/task_1.2.c* - implementation oftask 1.2
 
-*Single_List/Common.h* - fike with common definitions
+*Single_List/Common.h* - file with common definitions
 
 *Single_List/Sl_list.sln* - project file
 
@@ -29,5 +29,8 @@
 *Single_List/Sl_list.vcxproj.filters* - project file
 
 *Single_List/Sl_list.vcxproj.user* - project file
+
+*Single_List/main.c* - running tests and functions
+
 
 
