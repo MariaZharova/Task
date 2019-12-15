@@ -1,11 +1,16 @@
-﻿/*
+/*
 * This file is Sl_list.c
 * Single linked list implementation
 * Author Maria Zharova <MZharovaNN@yandex.ru>
 * Created 11.11.2019
 */
 
-#include "common.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include "Sl_list.h"
+#define ERROR_OUT_OF_MEMORY NULL
+#define ERROR_INVALID_INPUT NULL
+#define ERROR_INVALID_INPUT_INT -1
 
 plist create_list(void)
 {
@@ -15,19 +20,18 @@ plist create_list(void)
 	{
 		printf("Error, out of memory:(\n");
 		return ERROR_OUT_OF_MEMORY;
-	}	
+	}
 	first->size = 0;
 	first->head = NULL;
 
 	return first;
 }
 
-void destroy_list(plist first)
+int destroy_list(plist first)
 {
 	if (NULL == first)
 	{
-		printf("Error, out of memory:(\n");
-		return;
+		return 1;
 	}
 	plist_entry head = first->head;
 	plist_entry tmp1, tmp2;
@@ -40,6 +44,7 @@ void destroy_list(plist first)
 	}
 	free(head);
 	printf("It's OK. The all list has been deleted.\n");
+	return 1;
 }
 
 plist_entry insert_entry(plist first, int value)
@@ -75,27 +80,26 @@ int delete_entry(plist first, int value)
 	plist_entry prev = curr->next;
 	int counter = 0;
 	do
-    {
+	{
 		if (curr->value == value)
-        {
+		{
 			if (NULL != prev)
-            { 
+			{
 				prev->next = curr->next;
-                free(curr);
-                curr = NULL;
-			    counter++;
-            }
+				free(curr);
+				curr = NULL;
+				counter++;
+			}
 			else
 			{
 				plist_entry new_first = first->head->next;
 				first->head = new_first;
 				counter++;
 			}
-        }
-        prev = curr;
+		}
+		prev = curr;
 		curr = curr->next;
-    } 
-	while (NULL != curr);
+	} while (NULL != curr);
 	return counter;
 }
 
