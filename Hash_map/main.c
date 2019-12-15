@@ -21,11 +21,11 @@ int main(void)
 		    if (strcmp(command, "INSERT") == 0)
 		    {
 			      scanf("%llu", &number);
-			      INSERT(name, number);
+			      INSERT_TASK(name, number);
 		    }
 		    if (strcmp(command, "FIND") == 0)
 		    {
-			      FIND(name);
+			      FIND_TASK(name);
 		    }
 	      return 0;
     }
